@@ -86,7 +86,6 @@ function atmam(){
 function refresh(){
     if (!tam){target1.style.border="0px";clear=true}
     else{tam=false};
-    target1.style.border="0px"
     target1=undefined;
     target2=undefined;
     shmar=0;
