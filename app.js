@@ -8,6 +8,7 @@ var date1;
 var word= 0;
 var worng= 0;
 var clear=false;
+var tam=false;
 
 const container= document.createElement("div");
 container.classList.add("container");
@@ -78,17 +79,20 @@ function atmam(){
     target1=undefined;
     target2=undefined;
     shmar=0;
-    word=0
-    worng=0
+    word=0;
+    worng=0;
+    tam=true;
 } 
 function refresh(){
+    if (!tam){target1.style.border="0px";clear=true}
+    else{tam=false};
     target1.style.border="0px"
     target1=undefined;
     target2=undefined;
     shmar=0;
     word=0
     worng=0
-    clear=true;
+    flag=true;
     for (i=0;i<sentence.length;i++){
         document.querySelectorAll('.letter')[i].style.color='black';
         document.querySelectorAll('.letter')[i].style.backgroundColor='white';
