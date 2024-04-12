@@ -8,7 +8,7 @@ var date1;
 var word= 0;
 var worng= 0;
 var clear=false;
-var tam=false;
+var end=false;
 
 const container= document.createElement("div");
 container.classList.add("container");
@@ -26,7 +26,7 @@ document.querySelector(".fotter").addEventListener('click',refresh);
 
 function check(event){
     
-    if ( shmar === 0 ){ date1 = Date.now(); s()};
+    if ( shmar === 0 ){ date1 = Date.now(); clerInterval()}; /* (Set the date1) and (Starting clerInterval's work) with the first click */
     if ( list.includes((event.key).toLowerCase()) ){
         if(sentence[shmar]===" "){word++};
         target2= document.querySelectorAll(".letter")[shmar];
@@ -50,6 +50,7 @@ function check(event){
     else if (event.key==="Backspace"){
         target2=document.querySelectorAll(".letter")[shmar];
         if ( shmar > 0 ){ shmar--};
+        if(sentence[shmar]===" "){word--};
         target1= document.querySelectorAll(".letter")[shmar];
         if ( target1.style.backgroundColor === "rgb(255, 206, 206)"){worng--;}
         target1.style.border="1px solid";
@@ -59,9 +60,9 @@ function check(event){
     }
 }
 
-function s(){
+function clerInterval(){
 const spead=setInterval(()=>{
-    const timeDelay=(Date.now()-date1)/60000 ;
+    const timeDelay=(Date.now()-date1)/60000 ; /*  Convert the delay time to minutes  */
     const percentError=Math.floor((worng/shmar)*100);
     const speadWord=Math.floor(word/timeDelay);
     const speadCharacters= Math.floor(shmar/timeDelay);
@@ -81,11 +82,11 @@ function atmam(){
     shmar=0;
     word=0;
     worng=0;
-    tam=true;
+    end=true;
 } 
 function refresh(){
-    if (!tam){target1.style.border="0px";clear=true}
-    else{tam=false};
+    if ( !end ){ target1.style.border = "0px";clear=true }
+    else{ end = false };
     target1=undefined;
     target2=undefined;
     shmar=0;
